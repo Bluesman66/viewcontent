@@ -14,11 +14,13 @@ export class ItemComponent implements OnInit, AfterContentInit {
 
   constructor() { }
   @ContentChild('h') headerElement: ElementRef;
+  @ContentChild('n', { read: NestedComponent }) nestedComponentByRef: NestedComponent;
   @ContentChild(NestedComponent) nestedComponent: NestedComponent;
   @ContentChildren(NestedComponent) nestedComponents: QueryList<NestedComponent>;
 
   ngAfterContentInit(): void {
     console.log(this.headerElement.nativeElement);
+    console.log(this.nestedComponentByRef);
     console.log(this.nestedComponent);
     console.log(this.nestedComponents.toArray());
   }
