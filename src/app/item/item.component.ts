@@ -44,6 +44,7 @@ export class ItemComponent implements OnInit, AfterContentInit, AfterViewInit {
   }
 
   ngOnInit() {
+    console.log('--- OnInit ---');
   }
 
 }

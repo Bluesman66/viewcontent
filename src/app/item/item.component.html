@@ -2,3 +2,9 @@
 <ng-content></ng-content>
 <app-nested></app-nested>
 <app-nested #nview></app-nested>
+
+<ng-container *ngTemplateOutlet="tmp"></ng-container>
+
+<ng-template #tmp>
+  <h1>Template</h1>
+</ng-template>
