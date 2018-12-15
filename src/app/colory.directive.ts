@@ -1,7 +1,8 @@
 import { Directive, HostBinding } from '@angular/core';
 
 @Directive({
-  selector: '[appColory]'
+  selector: '[appColory]',
+  exportAs: 'colory'
 })
 export class ColoryDirective {
 
@@ -9,4 +10,7 @@ export class ColoryDirective {
 
   @HostBinding('style.color') color = 'red';
 
+  changeColor(color: string) {
+    this.color = color;
+  }
 }
