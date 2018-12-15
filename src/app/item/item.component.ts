@@ -1,4 +1,6 @@
-import { AfterContentInit, Component, ContentChild, ElementRef, OnInit } from '@angular/core';
+import {
+    AfterContentInit, Component, ContentChild, ContentChildren, ElementRef, OnInit, QueryList
+} from '@angular/core';
 
 import { NestedComponent } from '../nested/nested.component';
 
@@ -13,10 +15,12 @@ export class ItemComponent implements OnInit, AfterContentInit {
   constructor() { }
   @ContentChild('h') headerElement: ElementRef;
   @ContentChild(NestedComponent) nestedComponent: NestedComponent;
+  @ContentChildren(NestedComponent) nestedComponents: QueryList<NestedComponent>;
 
   ngAfterContentInit(): void {
     console.log(this.headerElement.nativeElement);
     console.log(this.nestedComponent);
+    console.log(this.nestedComponents.toArray());
   }
 
   ngOnInit() {
