@@ -1,10 +1,9 @@
 import {
-  AfterContentInit, Component, ContentChild, ContentChildren, ElementRef, OnInit, QueryList,
-  ViewChild,
-  ViewChildren,
-  AfterViewInit
+    AfterContentInit, AfterViewInit, Component, ComponentFactoryResolver, ContentChild,
+    ContentChildren, ElementRef, OnInit, QueryList, ViewChild, ViewChildren, ViewContainerRef
 } from '@angular/core';
 
+import { BannerComponent } from '../banner/banner.component';
 import { NestedComponent } from '../nested/nested.component';
 
 @Component({
@@ -15,7 +14,7 @@ import { NestedComponent } from '../nested/nested.component';
 
 export class ItemComponent implements OnInit, AfterContentInit, AfterViewInit {
 
-  constructor() { }
+  constructor(protected view: ViewContainerRef, protected componentFactoryResolver: ComponentFactoryResolver) { }
 
   @ContentChild('hcontent') headerElement: ElementRef;
   @ContentChild('ncontent', { read: NestedComponent }) nestedComponentByRef: NestedComponent;
@@ -45,6 +44,8 @@ export class ItemComponent implements OnInit, AfterContentInit, AfterViewInit {
 
   ngOnInit() {
     console.log('--- OnInit ---');
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(BannerComponent);
+    this.view.createComponent(componentFactory);
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit, ViewContainerRef } from '@angular/core';
 
 import { ItemComponent } from '../item/item.component';
 
@@ -9,8 +9,8 @@ import { ItemComponent } from '../item/item.component';
 })
 export class ChildComponent extends ItemComponent implements OnInit {
 
-  constructor() {
-    super();
+  constructor(protected view: ViewContainerRef, protected componentFactoryResolver: ComponentFactoryResolver) {
+    super(view, componentFactoryResolver);
   }
 
   ngOnInit() {

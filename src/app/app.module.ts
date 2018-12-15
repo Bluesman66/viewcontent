@@ -1,12 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { ItemComponent } from "./item/item.component";
-import { NestedComponent } from './nested/nested.component';
-import { ColoryDirective } from './colory.directive';
+import { BannerComponent } from './banner/banner.component';
 import { ChildComponent } from './child/child.component';
+import { ColoryDirective } from './colory.directive';
 import { DelayDirective } from './delay.directive';
+import { ItemComponent } from './item/item.component';
+import { NestedComponent } from './nested/nested.component';
 
 @NgModule({
   declarations: [
@@ -15,10 +16,14 @@ import { DelayDirective } from './delay.directive';
     NestedComponent,
     ColoryDirective,
     ChildComponent,
-    DelayDirective
+    DelayDirective,
+    BannerComponent
   ],
   imports: [
     BrowserModule
+  ],
+  entryComponents: [
+    BannerComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
