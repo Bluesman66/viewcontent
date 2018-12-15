@@ -4,6 +4,7 @@ import {
 } from '@angular/core';
 
 import { BannerComponent } from '../banner/banner.component';
+import { HostDirective } from '../host.directive';
 import { NestedComponent } from '../nested/nested.component';
 
 @Component({
@@ -15,6 +16,8 @@ import { NestedComponent } from '../nested/nested.component';
 export class ItemComponent implements OnInit, AfterContentInit, AfterViewInit {
 
   constructor(protected view: ViewContainerRef, protected componentFactoryResolver: ComponentFactoryResolver) { }
+
+  @ViewChild(HostDirective) host: HostDirective;
 
   @ContentChild('hcontent') headerElement: ElementRef;
   @ContentChild('ncontent', { read: NestedComponent }) nestedComponentByRef: NestedComponent;
@@ -45,7 +48,8 @@ export class ItemComponent implements OnInit, AfterContentInit, AfterViewInit {
   ngOnInit() {
     console.log('--- OnInit ---');
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(BannerComponent);
-    this.view.createComponent(componentFactory);
+    // this.view.createComponent(componentFactory);
+    this.host.view.createComponent(componentFactory);
   }
 
 }

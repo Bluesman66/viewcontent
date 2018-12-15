@@ -1,5 +1,9 @@
 <h1 #hview>VIEW_ITEM</h1>
+
+<div appHost></div>
+
 <ng-content></ng-content>
+
 <app-nested></app-nested>
 <app-nested #nview></app-nested>
 
@@ -12,6 +16,6 @@
 
 <ul>
   <li *ngFor="let time of [1, 2, 3, 4, 5]">
-    <h1 *appDelay="time">Structural Directive</h1>    
+    <h1 *appDelay="time">Structural Directive</h1>
   </li>
 </ul>

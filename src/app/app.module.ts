@@ -8,6 +8,7 @@ import { ColoryDirective } from './colory.directive';
 import { DelayDirective } from './delay.directive';
 import { ItemComponent } from './item/item.component';
 import { NestedComponent } from './nested/nested.component';
+import { HostDirective } from './host.directive';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NestedComponent } from './nested/nested.component';
     ColoryDirective,
     ChildComponent,
     DelayDirective,
-    BannerComponent
+    BannerComponent,
+    HostDirective
   ],
   imports: [
     BrowserModule
