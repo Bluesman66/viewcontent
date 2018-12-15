@@ -5,13 +5,15 @@ import { AppComponent } from './app.component';
 import { ItemComponent } from "./item/item.component";
 import { NestedComponent } from './nested/nested.component';
 import { ColoryDirective } from './colory.directive';
+import { ChildComponent } from './child/child.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ItemComponent,
     NestedComponent,
-    ColoryDirective
+    ColoryDirective,
+    ChildComponent
   ],
   imports: [
     BrowserModule
