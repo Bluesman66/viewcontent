@@ -6,6 +6,7 @@ import { ItemComponent } from "./item/item.component";
 import { NestedComponent } from './nested/nested.component';
 import { ColoryDirective } from './colory.directive';
 import { ChildComponent } from './child/child.component';
+import { DelayDirective } from './delay.directive';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { ChildComponent } from './child/child.component';
     ItemComponent,
     NestedComponent,
     ColoryDirective,
-    ChildComponent
+    ChildComponent,
+    DelayDirective
   ],
   imports: [
     BrowserModule
