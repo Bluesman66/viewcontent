@@ -1,6 +1,6 @@
 import {
-    AfterContentInit, AfterViewInit, Component, ComponentFactoryResolver, ContentChild,
-    ContentChildren, ElementRef, OnInit, QueryList, ViewChild, ViewChildren, ViewContainerRef
+  AfterContentInit, AfterViewInit, Component, ComponentFactoryResolver, ContentChild,
+  ContentChildren, ElementRef, OnInit, QueryList, ViewChild, ViewChildren, ViewContainerRef
 } from '@angular/core';
 
 import { BannerComponent } from '../banner/banner.component';
@@ -53,14 +53,32 @@ export class ItemComponent implements OnInit, AfterContentInit, AfterViewInit {
   ngOnInit() {
     console.log('--- OnInit ---');
     // динамическое создание компонента
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(BannerComponent);
+    // создание фабрик для компонеетов
+    const bannerComponentFactory = this.componentFactoryResolver.resolveComponentFactory(BannerComponent);
+    const banner2ComponentFactory = this.componentFactoryResolver.resolveComponentFactory(Banner2Component);
     // и вывод его (компонент будет выведен после представления)
-    this.view.createComponent(componentFactory);
+    this.view.createComponent(bannerComponentFactory);
+
     // вывод в определенное место в элемент с директивой HostDirective (т.н. viewcontainer)
-    this.host.view.createComponent(componentFactory);
+    // получим ссылку на контейнер представления
+    const viewContainerRef = this.host.view;
+    // вывод компонента и передача данных в динамический компонент
+    const componentRef = viewContainerRef.createComponent(bannerComponentFactory);
+    (<BannerComponent>componentRef.instance).text = 'HAPPY NEW 2019 YEAR!';
+    setTimeout(() => {
+      (<BannerComponent>componentRef.instance).text = 'WOW!';
+    }, 4000);
 
+    setTimeout(() => {
+      // очистка контейнера представления
+      viewContainerRef.clear();
+      // и динамический вывод другого компоенета
+      viewContainerRef.createComponent(banner2ComponentFactory);
+    }, 6000);
+
+    // другой способ динамического создания компонента
     this.myComponent = BannerComponent;
-
+    // динамическая замена компонента на другой
     setTimeout(() => {
       this.myComponent = Banner2Component;
     }, 3000);
