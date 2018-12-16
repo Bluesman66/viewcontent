@@ -1,6 +1,6 @@
 import {
-    AfterContentInit, AfterViewInit, Component, ComponentFactoryResolver, ContentChild,
-    ContentChildren, ElementRef, OnInit, QueryList, ViewChild, ViewChildren, ViewContainerRef
+  AfterContentInit, AfterViewInit, Component, ComponentFactoryResolver, ContentChild,
+  ContentChildren, ElementRef, OnInit, QueryList, ViewChild, ViewChildren, ViewContainerRef
 } from '@angular/core';
 
 import { BannerComponent } from '../banner/banner.component';
@@ -17,12 +17,16 @@ export class ItemComponent implements OnInit, AfterContentInit, AfterViewInit {
 
   constructor(protected view: ViewContainerRef, protected componentFactoryResolver: ComponentFactoryResolver) { }
 
-  @ViewChild(HostDirective) host: HostDirective;
+  public myComponent;
 
+  // доступ к контентой части компонента
   @ContentChild('hcontent') headerElement: ElementRef;
   @ContentChild('ncontent', { read: NestedComponent }) nestedComponentByRef: NestedComponent;
   @ContentChild(NestedComponent) nestedComponent: NestedComponent;
   @ContentChildren(NestedComponent) nestedComponents: QueryList<NestedComponent>;
+
+  // доступ к представлению компонента
+  @ViewChild(HostDirective) host: HostDirective;
 
   @ViewChild('hview') viewHeaderElement: ElementRef;
   @ViewChild('nview', { read: NestedComponent }) viewNestedComponentByRef: NestedComponent;
@@ -47,9 +51,14 @@ export class ItemComponent implements OnInit, AfterContentInit, AfterViewInit {
 
   ngOnInit() {
     console.log('--- OnInit ---');
+    // динамическое создание компонента
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(BannerComponent);
-    // this.view.createComponent(componentFactory);
+    // и вывод его (компонент будет выведен после представления)
+    this.view.createComponent(componentFactory);
+    // вывод в определенное место в элемент с директивой HostDirective (т.н. viewcontainer)
     this.host.view.createComponent(componentFactory);
+
+    this.myComponent = BannerComponent;
   }
 
 }

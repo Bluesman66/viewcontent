@@ -1,21 +1,25 @@
-<h1 #hview>VIEW_ITEM</h1>
+<div class="item-view">
+  <h1 #hview>VIEW_ITEM</h1>
 
-<div appHost></div>
+  <div appHost></div>
 
-<ng-content></ng-content>
+  <ng-content></ng-content>
 
-<app-nested></app-nested>
-<app-nested #nview></app-nested>
+  <ng-container *ngComponentOutlet="myComponent"></ng-container>
 
-<ng-container *ngTemplateOutlet="tmp"></ng-container>
+  <app-nested></app-nested>
+  <app-nested #nview></app-nested>
 
-<ng-template #tmp>
-  <h1 appColory #c="colory">Template</h1>
-  <button (click)="c.changeColor('green')">Do Green!</button>
-</ng-template>
+  <ng-container *ngTemplateOutlet="tmp"></ng-container>
 
-<ul>
-  <li *ngFor="let time of [1, 2, 3, 4, 5]">
-    <h1 *appDelay="time">Structural Directive</h1>
-  </li>
-</ul>
+  <ng-template #tmp>
+    <h1 appColory #c="colory">Template</h1>
+    <button (click)="c.changeColor('green')">Do Green!</button>
+  </ng-template>
+
+  <ul>
+    <li *ngFor="let time of [1, 2, 3, 4, 5]">
+      <h1 *appDelay="time">Structural Directive</h1>
+    </li>
+  </ul>
+</div>
