@@ -1,9 +1,10 @@
 import {
-  AfterContentInit, AfterViewInit, Component, ComponentFactoryResolver, ContentChild,
-  ContentChildren, ElementRef, OnInit, QueryList, ViewChild, ViewChildren, ViewContainerRef
+    AfterContentInit, AfterViewInit, Component, ComponentFactoryResolver, ContentChild,
+    ContentChildren, ElementRef, OnInit, QueryList, ViewChild, ViewChildren, ViewContainerRef
 } from '@angular/core';
 
 import { BannerComponent } from '../banner/banner.component';
+import { Banner2Component } from '../banner2/banner2.component';
 import { HostDirective } from '../host.directive';
 import { NestedComponent } from '../nested/nested.component';
 
@@ -59,6 +60,10 @@ export class ItemComponent implements OnInit, AfterContentInit, AfterViewInit {
     this.host.view.createComponent(componentFactory);
 
     this.myComponent = BannerComponent;
+
+    setTimeout(() => {
+      this.myComponent = Banner2Component;
+    }, 3000);
   }
 
 }

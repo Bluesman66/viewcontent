@@ -9,6 +9,7 @@ import { DelayDirective } from './delay.directive';
 import { ItemComponent } from './item/item.component';
 import { NestedComponent } from './nested/nested.component';
 import { HostDirective } from './host.directive';
+import { Banner2Component } from './banner2/banner2.component';
 
 @NgModule({
   declarations: [
@@ -19,13 +20,15 @@ import { HostDirective } from './host.directive';
     ChildComponent,
     DelayDirective,
     BannerComponent,
-    HostDirective
+    HostDirective,
+    Banner2Component
   ],
   imports: [
     BrowserModule
   ],
   entryComponents: [
-    BannerComponent
+    BannerComponent,
+    Banner2Component
   ],
   providers: [],
   bootstrap: [AppComponent]
